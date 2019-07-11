@@ -23,14 +23,13 @@ var result=excelToJSON({
 
 // console.log(result)
 
-MongoClient.connect('mongodb://localhost:27017/NSS',(err,client)=>{
+MongoClient.connect(process.env.MONGODB_URI,(err,client)=>{
 	if (err) {
-    	return console.log('Unable to connect to MongoDB server');
+    	return console.log('Unable to connect to MongoDB server',err);
   	}
 
   	console.log('Connected to MongoDB server');
-  	var db=client.db('NSS');
-
+  	var db=client.db(process.env.MONGODB_DB);
   	result.Activities.forEach((activity)=>{
   		var images = activity.photos.split(',')
   		var des = activity.description.split(',')
@@ -57,6 +56,6 @@ MongoClient.connect('mongodb://localhost:27017/NSS',(err,client)=>{
 	  		}
 	  	})
   	})
-
-  	client.close();
 })
+
+
