@@ -23,7 +23,7 @@ MongoClient.connect(process.env.MONGODB_URI,{useNewUrlParser:true},(err,client)=
   	var db=client.db(process.env.MONGODB_DB);
   
   	app.use('/',router(db));
-})
+}) 
 
-var port = parseInt(process.env.MONGODB_PORT) || 3000;
+var port = parseInt(process.env.PORT) || 3000;
 app.listen(port,()=>console.log(`Connected to port ${port}`));
