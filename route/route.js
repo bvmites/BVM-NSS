@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 module.exports = (db) => {
+	
 	const database = require('./../db/db.js')(db);
 
 	router.post('/getReport', async (req,res)=>{
