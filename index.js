@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 const router = require('./route/route.js');
 
-MongoClient.connect(process.env.MONGODB_URI,(err,client)=>{
+MongoClient.connect(process.env.MONGODB_URI,{useNewUrlParser:true},(err,client)=>{
 	if (err) {
     	return console.log('Unable to connect to MongoDB server',err);
   	}
