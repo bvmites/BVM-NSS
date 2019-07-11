@@ -13,17 +13,17 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 const router = require('./route/route.js');
-MongoClient.connect(process.env.MONGODB_ADDON_URI,(err,client)=>{
+MongoClient.connect(process.env.MONGODB_URI,(err,client)=>{
 	if (err) {
-    	return console.log('Unable to connect to MongoDB server');
+    	return console.log('Unable to connect to MongoDB server',err);
   	}
 
   	console.log('Connected to MongoDB server');
-  	var db=client.db(process.env.MONGODB_ADDON_DB);
+  	var db=client.db(process.env.MONGODB_DB);
   	app.use('/',router(db));
 })
 
-var port = parseInt(process.env.MONGODB_ADDON_PORT) || 3000;
+var port = parseInt(process.env.MONGODB_PORT) || 3000;
 app.listen(port,()=>console.log(`Connected to port ${port}`));
 
 // const excelToJSON = require('convert-excel-to-json')
