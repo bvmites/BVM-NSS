@@ -4,7 +4,7 @@ module.exports = (db) => {
 
 	const database = require('./../db/db.js')(db);
 
-	router.post('/getReport', async (req,res)=>{
+	router.get('/getReport', async (req,res)=>{
 		// console.log(req.query)
 		var report = await database.getReport(req.query.year,req.query.event)
 		if (report) {
@@ -20,7 +20,7 @@ module.exports = (db) => {
 		}
 	})
 
-	router.post('/getPhotos', async (req,res)=>{
+	router.get('/getPhotos', async (req,res)=>{
 		var images = await database.getPhotos(req.query.year,req.query.event)
 		if(images) {
 			res.status(200).send({
@@ -36,7 +36,7 @@ module.exports = (db) => {
 		}
 	})
 
-	router.post('/login',async(req,res)=>{
+	router.get('/login',async(req,res)=>{
 		var user = await database.login(req.query.email,req.query.password)
 		if(user){
 			res.status(200).send({
@@ -49,7 +49,7 @@ module.exports = (db) => {
 		}
 	})
 
-	router.post('/signup',(req,res)=>{
+	router.get('/signup',(req,res)=>{
 		// console.log(req.params)
 		database.signup(req.query.email,req.query.password,req.query.contact,req.query.name,res)
 	})
