@@ -4,14 +4,14 @@ module.exports = (db) => ({
 
 	getReport : (year,event)=>{
 		return db.collection('Report').findOne({
-			year,
+			year:parseInt(year),
 			event
 		})
 	},
 
 	getPhotos : (year,event)=>{
 		return db.collection('Activities').findOne({
-			year,
+			year:parseInt(year),
 			event
 		})
 	},
@@ -22,7 +22,7 @@ module.exports = (db) => ({
 			password
 		})
 	},
-	
+
 	signup : (email,password,contact,name,res)=>{
 		db.collection('Users').insertOne({
 			name,
