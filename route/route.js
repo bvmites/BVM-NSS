@@ -43,7 +43,7 @@ module.exports = (db) => {
 				status:'Yes'
 			})
 		} else {
-			res.status(400).send({
+			res.status(200).send({
 				status:'No'
 			})
 		}
