@@ -49,7 +49,7 @@ module.exports = (db) => {
 		}
 	})
 
-	router.get('/signup',(req,res)=>{
+	router.post('/signup',(req,res)=>{
 		// console.log(req.params)
 		database.signup(req.query.email,req.query.password,req.query.contact,req.query.name,res)
 	})

@@ -31,7 +31,7 @@ module.exports = (db) => ({
 			contact
 		},(err,result)=>{
 			if(err)
-				return res.status(400).send({
+				return res.status(200).send({
 					status:'No'
 				})
 			res.status(200).send({
