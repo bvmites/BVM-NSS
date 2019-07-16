@@ -36,7 +36,7 @@ module.exports = (db) => {
 		}
 	})
 
-	router.get('/login',async(req,res)=>{
+	router.post('/login',async(req,res)=>{
 		var user = await database.login(req.query.email,req.query.password)
 		if(user){
 			res.status(200).send({

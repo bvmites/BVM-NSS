@@ -21,7 +21,7 @@ MongoClient.connect(process.env.MONGODB_URI,{useNewUrlParser:true},(err,client)=
 
   	console.log('Connected to MongoDB server');
   	var db=client.db(process.env.MONGODB_DB);
-  
+
   	app.use('/',router(db));
 }) 
 
